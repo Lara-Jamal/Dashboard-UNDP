@@ -21,7 +21,7 @@ DEZ MRS Luxury Dashboard — دليل الاستخدام
   - DEZ_MRS_Luxury_Decision_Dashboard.html  → صفحة الداشبورد نفسها
   - DEZ_MRS_Dashboard.xlsx                  → مصدر البيانات (هذا الملف
                                                اللي بيتعدل)
-  - README_AR.txt                           → هذا الملف
+  - README.md                          → هذا الملف
 
 
 
