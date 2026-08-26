@@ -34,7 +34,7 @@ body.loading #topLoader{animation:loadbar 1.1s ease-in-out infinite}
 .skeleton{background:linear-gradient(90deg,#e7f1f8 25%,#f4f9fc 37%,#e7f1f8 63%);background-size:400% 100%;animation:shimmer 1.4s ease infinite}
 @keyframes shimmer{0%{background-position:100% 50%}100%{background-position:0 50%}}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px} .card{background:var(--card);border:1px solid #fff;border-radius:24px;padding:18px;box-shadow:0 14px 38px #006eb513;min-height:280px} .card h2{margin:0 0 14px;color:#06466f;font-size:20px} .span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12} canvas{max-height:290px} .page{display:none}.page.active{display:block}
-.map{height:430px;border-radius:24px;background:linear-gradient(135deg,#063a62,#005f9d 55%,#0099da);position:relative;overflow:hidden;border:1px solid #fff;box-shadow:inset 0 0 60px #002e4c66} .map:before{content:attr(data-title);position:absolute;left:22px;top:18px;color:#ffffff99;font-weight:800;direction:ltr} .river{position:absolute;inset:56% -10% auto -10%;height:38px;background:#6ccff6aa;transform:rotate(-12deg);filter:blur(.3px)} .bubble{position:absolute;border-radius:999px;background:#ffffffea;border:4px solid var(--sky);box-shadow:0 0 30px #6ccff6aa;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;cursor:pointer;transition:.25s;color:#053d65;overflow:hidden;padding:4%} .bubble:hover{transform:scale(1.06);z-index:5} .bubble .bname{display:block;width:100%;min-width:0;flex:0 0 auto;font-weight:800;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .bubble .bnum{display:block;width:100%;min-width:0;font-weight:900;line-height:1.05} .bubble .bunit{display:block;width:100%;min-width:0;font-weight:800;opacity:.8;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .legend{position:absolute;bottom:16px;right:16px;background:#ffffffdd;border-radius:14px;padding:10px 13px;color:#14324a;font-size:12px;line-height:2}
+.map{height:430px;border-radius:24px;background:linear-gradient(135deg,#063a62,#005f9d 55%,#0099da);position:relative;overflow:hidden;border:1px solid #fff;box-shadow:inset 0 0 60px #002e4c66} .map:before{content:attr(data-title);position:absolute;left:22px;top:18px;color:#ffffff99;font-weight:800;direction:ltr} .river{position:absolute;inset:56% -10% auto -10%;height:38px;background:#6ccff6aa;transform:rotate(-12deg);filter:blur(.3px)} .bubble{position:absolute;border-radius:999px;background:#ffffffea;border:4px solid var(--sky);box-shadow:0 0 30px #6ccff6aa;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;cursor:pointer;transition:.25s;color:#053d65;overflow:hidden;padding:4%} .bubble:hover{transform:scale(1.06);z-index:5} .bubble.selected{border-color:#ffd23f!important;box-shadow:0 0 0 5px #ffd23f66,0 0 40px #ffd23fbb;transform:scale(1.08);z-index:6} .bubble.selected:hover{transform:scale(1.12)} .bubble.dimmed{opacity:.28;filter:grayscale(.4);box-shadow:none} .bubble .bname{display:block;width:max-content;max-width:none;min-width:0;flex:0 0 auto;font-weight:800;line-height:1.15;white-space:nowrap;overflow:visible;text-overflow:clip} .bubble .bnum{display:block;width:100%;min-width:0;font-weight:900;line-height:1.05} .bubble .bunit{display:block;width:100%;min-width:0;font-weight:800;opacity:.8;line-height:1.1;white-space:nowrap;overflow:visible;text-overflow:clip} .legend{position:absolute;bottom:16px;right:16px;background:#ffffffdd;border-radius:14px;padding:10px 13px;color:#14324a;font-size:12px;line-height:2}
 .tablewrap{max-height:460px;overflow:auto;border:1px solid var(--line);border-radius:18px} table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:10px;border-bottom:1px solid #e4eef5;text-align:right;vertical-align:top} th{background:#e8f6fd;color:#06466f;position:sticky;top:0;z-index:1} .pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#e6f5fc;border:1px solid #c8e6f5;font-weight:800} .high{background:#ffe8e9;color:#a5272d} .med{background:#fff3d9;color:#845500} .low{background:#e7f8ef;color:#137349}
 .insights{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .insight{background:linear-gradient(135deg,#fff,#edf9ff);border:1px solid white;border-radius:18px;padding:15px;box-shadow:0 12px 28px #006eb510;line-height:1.7} .insight b{color:#006eb5} .decision-list{display:grid;gap:12px} .decision{border:1px solid #d7ebf6;background:#fff;border-radius:18px;padding:14px;display:grid;grid-template-columns:80px 1fr;gap:14px;align-items:center} .score{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--undp2) calc(var(--p)*1%),#e6f3fa 0);font-weight:900;color:#053d65} .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;position:relative;z-index:20} .btn{border:0;border-radius:14px;background:linear-gradient(135deg,#006eb5,#0099da);color:white;padding:11px 14px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block} .btn.secondary{background:#fff;color:#006eb5;border:1px solid #b7dcea}.lang-btn{padding:9px 12px;border-radius:999px;border:1px solid #b7dcea;background:#fff;color:#006eb5;font-weight:900;cursor:pointer}.lang-btn.active{background:linear-gradient(135deg,#006eb5,#0099da);color:#fff;border-color:#006eb5} .footer{margin-top:22px;color:#718da0;font-size:12px;text-align:center}
 @media(max-width:1200px){.app{grid-template-columns:1fr}.side{height:auto;position:relative}.hero-grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}.insights{grid-template-columns:1fr}}
@@ -323,6 +323,8 @@ function applyFilters(){
   const areas=SELECTED_NEIGHBORHOODS;
   filtered=DATA.rows.filter(r=>(!city||r.City===city)&&(areas.size===0||areas.has(r.Neighborhood))&&(!p||r.Priority===p)&&(!c||r['Main Problem Class']===c)&&(!y||r.Year===y)&&(!sdg||r.SDG===sdg)&&(!plerp||r.PLERP===plerp)&&(!solClass||r['Solution Class']===solClass));
   renderAll();
+  const mapPage=byId('map');
+  if(mapPage && mapPage.classList.contains('active')) renderMap();
 }
 function renderKpis(){let n=filtered.length, h=filtered.filter(r=>r.Priority==='مهمة').length, m=filtered.filter(r=>r.Priority==='متوسطة').length; let areas=uniq(filtered.map(r=>r.Neighborhood)).length; let top=countBy(filtered,'Main Problem Class')[0]||['-',0]; let pl=countBy(filtered,'PLERP')[0]||['-',0]; byId('kpis').innerHTML=[['📋',t('kpi')[0],n,t('kpiSub')[0]],['🚨',t('kpi')[1],h,pct(h,n)+'% '+t('kpiSub')[1]],['⚠️',t('kpi')[2],m,pct(m,n)+'% '+t('kpiSub')[2]],['🗺️',t('kpi')[3],areas,t('kpiSub')[3]],['🏗️',t('kpi')[4],top[1],top[0]],['🎯',t('kpi')[5],pl[1],pl[0]]].map(x=>`<div class="kpi"><div class="ico">${x[0]}</div><h3>${x[1]}</h3><div class="num">${x[2]}</div><small>${x[3]}</small></div>`).join('')}
 function destroyCharts(){charts.forEach(c=>c.destroy());charts=[]}
@@ -364,8 +366,8 @@ function renderInsights(){
       ['Next step','Reset filters, then compare neighborhoods by volume, priority and repeated causes.']
     ];
   } else if(area){
-    const areaRanked = DATA.areas.find(a=>a.name===area);
-    const decisionLevel = (areaRanked && (areaRanked.high_pct>=80 || areaRanked.records>=40)) ? (LANG==='ar'?'تدخل عاجل':'Urgent intervention') : (areaRanked && areaRanked.high_pct>=60) ? (LANG==='ar'?'أولوية متوسطة':'Medium priority') : (LANG==='ar'?'متابعة ورصد':'Monitoring and follow-up');
+    const high_pct_area = n? Math.round((high/n)*1000)/10 : 0;
+    const decisionLevel = (high_pct_area>=80 || n>=40) ? (LANG==='ar'?'تدخل عاجل':'Urgent intervention') : (high_pct_area>=60) ? (LANG==='ar'?'أولوية متوسطة':'Medium priority') : (LANG==='ar'?'متابعة ورصد':'Monitoring and follow-up');
     cards = LANG==='ar' ? [
       [`تحليل الحي: ${area}`, `يوجد ${n} سجل/سجلات ضمن الحي، منها ${high} مهمة (${pct(high,n)}%) و${med} متوسطة (${pct(med,n)}%). مستوى القرار المقترح: <b>${decisionLevel}</b>.`],
       ['المشكلة الأكثر تأثيراً', `أكثر فئة متكررة في هذا الحي هي <b>${topClass[0]}</b> بعدد ${topClass[1]} سجل/سجلات، وهذا يعطي مؤشر واضح أين يجب تركيز التدخل.`],
@@ -437,61 +439,298 @@ function renderCauseTables(){
 }
 
 function refreshMapLanguage(){const box=byId('mapBox'); if(!box) return; box.querySelectorAll('.bubble').forEach(e=>e.remove()); renderMap();}
+function bubbleTextWidth(text,fontSize){
+  const canvas=document.createElement('canvas');
+  const ctx=canvas.getContext('2d');
+  const family=getComputedStyle(document.body).fontFamily || 'Cairo, Segoe UI, Tahoma, Arial, sans-serif';
+  ctx.font=`800 ${fontSize}px ${family}`;
+  return ctx.measureText(String(text||'')).width;
+}
+function areaStatsFromRows(rows){
+  const byArea={};
+  rows.forEach(r=>{ if(!r.Neighborhood) return; (byArea[r.Neighborhood]=byArea[r.Neighborhood]||[]).push(r); });
+  return Object.keys(byArea).map(name=>{
+    const ar=byArea[name], n=ar.length;
+    const high=ar.filter(r=>r.Priority==='مهمة').length;
+    const medium=ar.filter(r=>r.Priority==='متوسطة').length;
+    const low=n-high-medium;
+    const high_pct=n?Math.round((high/n)*1000)/10:0;
+    const classCounts=rawCountBy(ar,'Main Problem Class');
+    const top_class=classCounts.length?classCounts[0][0]:'غير محدد';
+    return {name, records:n, high, medium, low, high_pct, top_class};
+  });
+}
 function renderMap(){
   const box=byId('mapBox'); if(!box) return;
   box.querySelectorAll('.bubble').forEach(e=>e.remove());
-  const areasSorted=[...DATA.areas].sort((a,b)=>b.records-a.records);
-  if(!areasSorted.length) return;
-  const recs=areasSorted.map(a=>a.records);
-  const maxRec=Math.max(...recs), minRec=Math.min(...recs);
-  const W=box.clientWidth||760, H=box.clientHeight||430;
-  const pad=10;
-  // نصف قطر الفقاعة يتناسب مع عدد السجلات، ومع سقف يعتمد على مساحة الصندوق حتى ما تصير الفقاعات كبيرة أوي لما يكون عدد الأحياء كتير
-  const areaBudget = (W*H*0.62) / areasSorted.length;
-  const dynamicMaxR = Math.max(30, Math.min(78, Math.sqrt(areaBudget/Math.PI)));
-  const minR = Math.max(27, dynamicMaxR*0.4);
-  function radiusFor(rec){
-    if(maxRec===minRec) return (minR+dynamicMaxR)/2;
-    return minR + (dynamicMaxR-minR) * ((rec-minRec)/(maxRec-minRec));
-  }
-  const placed=[];
-  function overlaps(x,y,r){ return placed.some(p=>Math.hypot(p.x-x,p.y-y) < (p.r+r+5)); }
-  const goldenAngle = 137.508*(Math.PI/180);
-  areasSorted.forEach(a=>{
-    const r = radiusFor(a.records);
-    let x=W/2, y=H/2, found=false;
-    for(let attempt=0; attempt<4000 && !found; attempt++){
-      const angle = attempt*goldenAngle;
-      const dist = 4.2*Math.sqrt(attempt);
-      x = W/2 + dist*Math.cos(angle);
-      y = H/2 + dist*Math.sin(angle);
-      if(x-r<pad || x+r>W-pad || y-r<pad+8 || y+r>H-pad) continue;
-      if(!overlaps(x,y,r)) found=true;
+
+  // Bubbles reflect ALL active filters (city, priority, class, year, SDG,
+  // PLERP pillars, and neighborhood selection), not just the neighborhood
+  // filter — so they stay in sync with the rest of the dashboard.
+  const areasSorted=areaStatsFromRows(filtered).sort((a,b)=>b.records-a.records);
+  if(!areasSorted.length){
+    const selName=singleSelectedArea();
+    const prof=byId('areaProfile');
+    if(prof){
+      prof.dataset.selected='1';
+      prof.innerHTML = LANG==='ar'
+        ? `<div class="pill">${selName?vtxt(selName):t('allNeighborhoods')}</div><p>لا توجد سجلات مطابقة للفلاتر الحالية.</p>`
+        : `<div class="pill">${selName?vtxt(selName):t('allNeighborhoods')}</div><p>No records match the current filters.</p>`;
     }
-    if(!found){ x=Math.max(r+pad,Math.min(W-r-pad,x)); y=Math.max(r+pad+8,Math.min(H-r-pad,y)); }
-    placed.push({x,y,r});
+    return;
+  }
+
+  const W=box.clientWidth||760, H=box.clientHeight||430;
+
+  // Reserve the map title area at the top-left. All bubbles start BELOW it.
+  const pad=12, titleSafe=64, gap=9;
+  const maxRec=Math.max(...areasSorted.map(a=>a.records));
+  const minRec=Math.min(...areasSorted.map(a=>a.records));
+
+  // Keep the bubbles readable while making the available lower area the
+  // actual packing area.
+  const freeH=Math.max(220,H-titleSafe-pad);
+  const areaBudget=(W*freeH*0.58)/areasSorted.length;
+  const dynamicMaxR=Math.max(42,Math.min(66,Math.sqrt(areaBudget/Math.PI)));
+  const minR=Math.max(24,dynamicMaxR*0.40);
+
+  function recordRadius(rec){
+    if(maxRec===minRec) return (minR+dynamicMaxR)/2;
+    return minR+(dynamicMaxR-minR)*((rec-minRec)/(maxRec-minRec));
+  }
+
+  function textWidth(text,fontSize){
+    const canvas=document.createElement('canvas');
+    const ctx=canvas.getContext('2d');
+    const family=getComputedStyle(document.body).fontFamily||'Cairo, Segoe UI, Tahoma, Arial, sans-serif';
+    ctx.font=`800 ${fontSize}px ${family}`;
+    return ctx.measureText(String(text||'')).width;
+  }
+
+  function radiusFor(area){
+    const recordR=recordRadius(area.records);
+    // The circle grows with the actual neighborhood name width.
+    const nameR=(textWidth(vtxt(area.name),13)/2)+18;
+    return Math.max(recordR,nameR,30);
+  }
+
+  const items=areasSorted
+    .map(a=>({a,r:radiusFor(a)}))
+    .sort((x,y)=>y.r-x.r);
+
+  const legendW=Math.min(330,Math.max(260,W*0.36));
+  const legendH=150;
+  const legend={x:W-legendW-16,y:H-legendH-16,w:legendW,h:legendH};
+
+  function circleTouchesLegend(x,y,r){
+    const nx=Math.max(legend.x,Math.min(x,legend.x+legend.w));
+    const ny=Math.max(legend.y,Math.min(y,legend.y+legend.h));
+    return Math.hypot(x-nx,y-ny)<r+8;
+  }
+
+  function validPoint(x,y,r){
+    if(x<pad+r || x>W-pad-r || y<titleSafe+r || y>H-pad-r) return false;
+    return !circleTouchesLegend(x,y,r);
+  }
+
+  function overlapAmount(a,b){
+    return (a.r+b.r+gap)-Math.hypot(a.x-b.x,a.y-b.y);
+  }
+
+  // Deterministic hexagonal candidate grid: this gives a clean, intentional
+  // circular distribution rather than random-looking positions.
+  const candidates=[];
+  const step=10;
+  const rowStep=step*Math.sqrt(3);
+  let row=0;
+  for(let y=titleSafe+24;y<=H-pad;y+=rowStep,row++){
+    const offset=(row%2)*step/2;
+    for(let x=pad;x<=W-pad;x+=step){
+      candidates.push({x:x+offset,y});
+    }
+  }
+
+  const placed=[];
+  for(const item of items){
+    const r=item.r;
+    let best=null, bestScore=Infinity;
+
+    for(const c of candidates){
+      if(!validPoint(c.x,c.y,r)) continue;
+
+      let score=0;
+      let overlaps=0;
+      for(const q of placed){
+        const d=Math.hypot(c.x-q.x,c.y-q.y);
+        const need=r+q.r+gap;
+        if(d<need){
+          const o=need-d;
+          score += o*o*1000;
+          overlaps++;
+        }else{
+          // Mild attraction keeps the layout compact and circular.
+          score += Math.max(0, d-(r+q.r+gap+28))*0.035;
+        }
+      }
+
+      // Prefer positions around the center of the usable area, but never
+      // above the title-safe line.
+      const cx=W/2, cy=titleSafe+(H-titleSafe)/2;
+      score += Math.hypot(c.x-cx,(c.y-cy)*1.05)*0.06;
+
+      if(overlaps===0 && score<bestScore){
+        bestScore=score;
+        best={x:c.x,y:c.y};
+      }else if(!best && score<bestScore){
+        bestScore=score;
+        best={x:c.x,y:c.y};
+      }
+    }
+
+    if(!best){
+      best={x:W/2,y:titleSafe+r+10};
+    }
+    placed.push({x:best.x,y:best.y,r,item});
+  }
+
+  // Collision relaxation. It is deliberately repeated until every pair is
+  // separated, while also keeping every bubble below the title and outside
+  // the legend.
+  for(let iter=0;iter<600;iter++){
+    let moved=false;
+
+    for(let i=0;i<placed.length;i++){
+      const a=placed[i];
+      for(let j=i+1;j<placed.length;j++){
+        const b=placed[j];
+        let dx=b.x-a.x, dy=b.y-a.y;
+        let d=Math.hypot(dx,dy);
+        const need=a.r+b.r+gap;
+
+        if(d<need){
+          if(d<0.001){ dx=1; dy=0; d=1; }
+          const push=(need-d)/2+0.15;
+          dx/=d; dy/=d;
+          a.x-=dx*push; a.y-=dy*push;
+          b.x+=dx*push; b.y+=dy*push;
+          moved=true;
+        }
+      }
+    }
+
+    for(const p of placed){
+      p.x=Math.max(pad+p.r,Math.min(W-pad-p.r,p.x));
+      p.y=Math.max(titleSafe+p.r,Math.min(H-pad-p.r,p.y));
+
+      // Push bubbles out of the legend deterministically.
+      if(circleTouchesLegend(p.x,p.y,p.r)){
+        const left=legend.x-p.r-8;
+        const top=legend.y-p.r-8;
+        const moveLeft=Math.abs(p.x-left);
+        const moveUp=Math.abs(p.y-top);
+        if(moveLeft<moveUp) p.x=left;
+        else p.y=top;
+
+        p.x=Math.max(pad+p.r,Math.min(W-pad-p.r,p.x));
+        p.y=Math.max(titleSafe+p.r,Math.min(H-pad-p.r,p.y));
+      }
+    }
+
+    if(!moved) break;
+  }
+
+  // Final deterministic separation pass. This guarantees that two circles
+  // cannot occupy the same visual space after boundary correction.
+  for(let pass=0;pass<80;pass++){
+    let any=false;
+    for(let i=0;i<placed.length;i++){
+      for(let j=i+1;j<placed.length;j++){
+        const a=placed[i],b=placed[j];
+        let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
+        const need=a.r+b.r+gap;
+        if(d<need){
+          if(d<0.001){dx=1;dy=0;d=1;}
+          const push=(need-d)/2+0.2;
+          dx/=d;dy/=d;
+          a.x-=dx*push;a.y-=dy*push;
+          b.x+=dx*push;b.y+=dy*push;
+          any=true;
+        }
+      }
+    }
+    for(const p of placed){
+      p.x=Math.max(pad+p.r,Math.min(W-pad-p.r,p.x));
+      p.y=Math.max(titleSafe+p.r,Math.min(H-pad-p.r,p.y));
+    }
+    if(!any) break;
+  }
+
+  const hasSelection = SELECTED_NEIGHBORHOODS.size>0;
+
+  placed.forEach(({item,r,x,y})=>{
+    const a=item.a;
     const color=a.high_pct>=80?'#e6535a':a.high_pct>=60?'#f2b84b':'#6ccff6';
+    const isSelected = hasSelection && SELECTED_NEIGHBORHOODS.has(a.name);
+    const isDimmed = hasSelection && !isSelected;
+
     const el=document.createElement('div');
-    el.className='bubble';
-    el.style.cssText=`width:${r*2}px;height:${r*2}px;left:${x-r}px;top:${y-r}px;border-color:${color}`;
-    const numSize=Math.max(12,Math.min(28,r*0.42));
-    const nameSize=Math.max(8,Math.min(13,r*0.19));
-    const unitSize=Math.max(7,nameSize*0.82);
-    let content=`<span class="bnum" style="font-size:${numSize}px">${a.records}</span>`;
-    if(r>=26) content = `<span class="bname" style="font-size:${nameSize}px">${vtxt(a.name)}</span>`+content;
-    if(r>=44) content += `<span class="bunit" style="font-size:${unitSize}px">${t('records')}</span>`;
-    el.innerHTML=content;
-    el.title=vtxt(a.name)+' — '+a.records+' '+t('records');
+    el.className='bubble'+(isSelected?' selected':'')+(isDimmed?' dimmed':'');
+    el.style.cssText=
+      `width:${r*2}px;height:${r*2}px;left:${x-r}px;top:${y-r}px;border-color:${color}`;
+
+    const nameSize=r>=45?13:Math.max(10,Math.min(12,r*0.27));
+    const numSize=Math.max(12,Math.min(28,r*0.38));
+    const unitSize=Math.max(7,nameSize*0.78);
+
+    el.innerHTML=
+      `<span class="bname" style="font-size:${nameSize}px;white-space:nowrap">${vtxt(a.name)}</span>`+
+      `<span class="bnum" style="font-size:${numSize}px">${a.records}</span>`+
+      `<span class="bunit" style="font-size:${unitSize}px">${t('records')}</span>`;
+
+    el.title=`${vtxt(a.name)} — ${a.records} ${t('records')}`;
     el.onclick=()=>profile(a);
     box.appendChild(el);
   });
-  if(DATA.areas[0]) profile(DATA.areas[0]);
+
+  // If exactly one neighborhood is selected in the filter, open its profile
+  // automatically so the bubble map and the filter stay in sync. The stats
+  // used here already reflect every active filter.
+  const selName = singleSelectedArea();
+  if(selName){
+    const selArea = areasSorted.find(x=>x.name===selName);
+    if(selArea){
+      profile(selArea);
+    } else {
+      const prof=byId('areaProfile');
+      if(prof){
+        prof.dataset.selected='1';
+        prof.innerHTML = LANG==='ar'
+          ? `<div class="pill">${vtxt(selName)}</div><p>لا توجد سجلات مطابقة للفلاتر الحالية ضمن هذا الحي.</p>`
+          : `<div class="pill">${vtxt(selName)}</div><p>No records match the current filters within this neighborhood.</p>`;
+      }
+    }
+  }
 }
-function profile(a){let ar=DATA.rows.filter(r=>r.Neighborhood===a.name);let causes=countBy(ar,'Cause').slice(0,5).map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join(''); let topResult=(countBy(ar,'Result')[0]||['-',0]); let topSolution=(countBy(ar,'Solution Class')[0]||['-',0]); const labels = LANG==='ar'
-? {records:'عدد السجلات', high:'الحالات المهمة', main:'فئة المشكلة الأبرز', causes:'أهم الأسباب التفصيلية', result:'النتيجة الأكثر تكراراً', solution:'نوع الحل المقترح', note:'ملاحظة تخطيطية', noteText:'الأولوية يجب أن تُبنى على عدد السجلات ونسبة الحالات المهمة وتكرار الأسباب الجذرية، دون استخدام مؤشرات مركبة غير موثقة.'}
-: {records:'Records', high:'High Priority', main:'Main Problem', causes:'Top Detailed Causes', result:'Most Frequent Result', solution:'Suggested Solution Type', note:'Planning Note', noteText:'Prioritization should be based on records volume, high-priority share and repeated root causes, without undocumented composite scores.'};
+
+function profile(a){
+  let ar=filtered.filter(r=>r.Neighborhood===a.name);
+  const n=ar.length;
+  const high=ar.filter(r=>r.Priority==='مهمة').length;
+  const high_pct=n?Math.round((high/n)*1000)/10:0;
+  const classCounts=countBy(ar,'Main Problem Class');
+  const top_class=classCounts.length?classCounts[0][0]:'غير محدد';
+  let causes=countBy(ar,'Cause').slice(0,5).map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join('');
+  let topResult=(countBy(ar,'Result')[0]||['-',0]);
+  let topSolution=(countBy(ar,'Solution Class')[0]||['-',0]);
+  const labels = LANG==='ar'
+? {records:'عدد السجلات', high:'الحالات المهمة', main:'فئة المشكلة الأبرز', causes:'أهم الأسباب التفصيلية', result:'النتيجة الأكثر تكراراً', solution:'نوع الحل المقترح', note:'ملاحظة تخطيطية', noteText:'الأولوية يجب أن تُبنى على عدد السجلات ونسبة الحالات المهمة وتكرار الأسباب الجذرية، دون استخدام مؤشرات مركبة غير موثقة.', noData:'لا توجد سجلات مطابقة للفلاتر الحالية ضمن هذا الحي. خفّف الفلترة لعرض ملف الحي.'}
+: {records:'Records', high:'High Priority', main:'Main Problem', causes:'Top Detailed Causes', result:'Most Frequent Result', solution:'Suggested Solution Type', note:'Planning Note', noteText:'Prioritization should be based on records volume, high-priority share and repeated root causes, without undocumented composite scores.', noData:'No records match the current filters within this neighborhood. Reduce filtering to view the profile.'};
 byId('areaProfile').dataset.selected='1';
-byId('areaProfile').innerHTML=`<div class="pill">${vtxt(a.name)}</div><p><b>${labels.records}:</b> ${a.records}<br><b>${labels.high}:</b> ${a.high} (${a.high_pct}%)<br><b>${labels.main}:</b> ${vtxt(a.top_class)}<br><b>${labels.result}:</b> ${topResult[0]} (${topResult[1]})<br><b>${labels.solution}:</b> ${topSolution[0]}</p><p><b>${labels.causes}:</b></p><ol>${causes}</ol><p><b>${labels.note}:</b> ${labels.noteText}</p>`}
+if(n===0){
+  byId('areaProfile').innerHTML=`<div class="pill">${vtxt(a.name)}</div><p>${labels.noData}</p>`;
+  return;
+}
+byId('areaProfile').innerHTML=`<div class="pill">${vtxt(a.name)}</div><p><b>${labels.records}:</b> ${n}<br><b>${labels.high}:</b> ${high} (${high_pct}%)<br><b>${labels.main}:</b> ${vtxt(top_class)}<br><b>${labels.result}:</b> ${topResult[0]} (${topResult[1]})<br><b>${labels.solution}:</b> ${topSolution[0]}</p><p><b>${labels.causes}:</b></p><ol>${causes}</ol><p><b>${labels.note}:</b> ${labels.noteText}</p>`}
 function renderMatrix(){const L=LANG==='ar'
 ? {rank:'الترتيب', n:'الحي', rec:'السجلات', high:'% مهمة', top:'أبرز فئة', decision:'القرار', urgent:'تدخل عاجل', medium:'أولوية متوسطة', monitor:'متابعة'}
 : {rank:'Rank', n:'Neighborhood', rec:'Records', high:'High %', top:'Top Class', decision:'Decision', urgent:'Urgent', medium:'Medium', monitor:'Monitor'};
