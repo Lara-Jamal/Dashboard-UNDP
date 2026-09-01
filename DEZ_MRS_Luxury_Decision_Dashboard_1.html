@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
@@ -36,6 +37,11 @@ body.loading #topLoader{animation:loadbar 1.1s ease-in-out infinite}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px} .card{background:var(--card);border:1px solid #fff;border-radius:24px;padding:18px;box-shadow:0 14px 38px #006eb513;min-height:280px} .card h2{margin:0 0 14px;color:#06466f;font-size:20px} .span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12} canvas{max-height:290px} .page{display:none}.page.active{display:block}
 .map{height:430px;border-radius:24px;background:linear-gradient(135deg,#063a62,#005f9d 55%,#0099da);position:relative;overflow:hidden;border:1px solid #fff;box-shadow:inset 0 0 60px #002e4c66} .map:before{content:attr(data-title);position:absolute;left:22px;top:18px;color:#ffffff99;font-weight:800;direction:ltr} .river{position:absolute;inset:56% -10% auto -10%;height:38px;background:#6ccff6aa;transform:rotate(-12deg);filter:blur(.3px)} .bubble{position:absolute;border-radius:999px;background:#ffffffea;border:4px solid var(--sky);box-shadow:0 0 30px #6ccff6aa;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;cursor:pointer;transition:.25s;color:#053d65;overflow:hidden;padding:4%} .bubble:hover{transform:scale(1.06);z-index:5} .bubble.selected{border-color:#ffd23f!important;box-shadow:0 0 0 5px #ffd23f66,0 0 40px #ffd23fbb;transform:scale(1.08);z-index:6} .bubble.selected:hover{transform:scale(1.12)} .bubble.dimmed{opacity:.28;filter:grayscale(.4);box-shadow:none} .bubble .bname{display:block;width:max-content;max-width:none;min-width:0;flex:0 0 auto;font-weight:800;line-height:1.15;white-space:nowrap;overflow:visible;text-overflow:clip} .bubble .bnum{display:block;width:100%;min-width:0;font-weight:900;line-height:1.05} .bubble .bunit{display:block;width:100%;min-width:0;font-weight:800;opacity:.8;line-height:1.1;white-space:nowrap;overflow:visible;text-overflow:clip} .legend{position:absolute;bottom:16px;right:16px;background:#ffffffdd;border-radius:14px;padding:10px 13px;color:#14324a;font-size:12px;line-height:2}
 .tablewrap{max-height:460px;overflow:auto;border:1px solid var(--line);border-radius:18px} table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:10px;border-bottom:1px solid #e4eef5;text-align:right;vertical-align:top} th{background:#e8f6fd;color:#06466f;position:sticky;top:0;z-index:1} .pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#e6f5fc;border:1px solid #c8e6f5;font-weight:800} .high{background:#ffe8e9;color:#a5272d} .med{background:#fff3d9;color:#845500} .low{background:#e7f8ef;color:#137349}
+.card-sub{margin:-6px 0 16px;color:var(--muted);font-size:13px;line-height:1.9;background:#f2f9fd;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.card-sub b{color:#06466f}
+.heat-low{background:#dff1fb;color:#06243b;text-align:center;font-weight:600}
+.heat-med{background:#7fc4e8;color:#06243b;text-align:center;font-weight:800}
+.heat-high{background:#006eb5;color:#ffffff;text-align:center;font-weight:800}
 .insights{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .insight{background:linear-gradient(135deg,#fff,#edf9ff);border:1px solid white;border-radius:18px;padding:15px;box-shadow:0 12px 28px #006eb510;line-height:1.7} .insight b{color:#006eb5} .decision-list{display:grid;gap:12px} .decision{border:1px solid #d7ebf6;background:#fff;border-radius:18px;padding:14px;display:grid;grid-template-columns:80px 1fr;gap:14px;align-items:center} .score{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--undp2) calc(var(--p)*1%),#e6f3fa 0);font-weight:900;color:#053d65} .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;position:relative;z-index:20} .btn{border:0;border-radius:14px;background:linear-gradient(135deg,#006eb5,#0099da);color:white;padding:11px 14px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block} .btn.secondary{background:#fff;color:#006eb5;border:1px solid #b7dcea}.lang-btn{padding:9px 12px;border-radius:999px;border:1px solid #b7dcea;background:#fff;color:#006eb5;font-weight:900;cursor:pointer}.lang-btn.active{background:linear-gradient(135deg,#006eb5,#0099da);color:#fff;border-color:#006eb5} .footer{margin-top:22px;color:#718da0;font-size:12px;text-align:center}
 @media(max-width:1200px){.app{grid-template-columns:1fr}.side{height:auto;position:relative}.hero-grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}.insights{grid-template-columns:1fr}}
 @media(max-width:720px){
@@ -74,7 +80,7 @@ body.loading #topLoader{animation:loadbar 1.1s ease-in-out infinite}
 <div id="overview" class="page active"><div class="kpis" id="kpis"><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div></div><div class="grid"><div class="card span8"><h2>Priority Signal by Neighborhood</h2><canvas id="chartAreas"></canvas></div><div class="card span4"><h2>Priority Distribution</h2><canvas id="chartPriority"></canvas></div><div class="card span6"><h2>Main Problem Classes</h2><canvas id="chartMain"></canvas></div><div class="card span6"><h2>PLERP / Response Pillars</h2><canvas id="chartPlerp"></canvas></div><div class="card span12"><h2>Executive Insights</h2><div class="insights" id="insights"></div></div><div class="card span12"><h2>Top Detailed Causes / Causes_Name</h2><div id="causeNarrative" class="narrative"></div><div class="tablewrap"><table id="topCausesTable"></table></div></div></div></div>
 <div id="map" class="page"><div class="grid"><div class="card span8"><h2> Decision Map / Neighborhood Risk Bubbles</h2><div class="map" id="mapBox" data-title="Decision Support Map"><div class="river"></div><div class="legend">🔴 High decision priority<br>🟠 Medium decision priority<br>🔵 Monitoring / follow-up<br><b>Bubble size = number of records</b></div></div></div><div class="card span4"><h2>Selected Area Profile</h2><div id="areaProfile" style="line-height:2;color:#2d526b">Click any neighborhood bubble to view the decision profile.</div></div></div></div>
 <div id="analysis" class="page"><div class="grid"><div class="card span6"><h2>SDG Distribution</h2><canvas id="chartSdg"></canvas></div><div class="card span6"><h2>Solution Classes</h2><canvas id="chartSolutions"></canvas></div><div class="card span12"><h2>Priority Matrix</h2><div class="tablewrap"><table id="matrixTable"></table></div></div></div></div>
-<div id="causes" class="page"><div class="grid"><div class="card span7"><h2>Top Detailed Causes / Causes_Name</h2><canvas id="chartCauseTop"></canvas></div><div class="card span5"><h2>Cause Intelligence Brief</h2><div id="causeBrief" class="decision-text"></div></div><div class="card span12"><h2>Cause × Neighborhood Heatmap</h2><div class="tablewrap"><table id="causeNeighborhoodTable"></table></div></div><div class="card span6"><h2>Cause × Priority Matrix</h2><div class="tablewrap"><table id="causePriorityTable"></table></div></div><div class="card span6"><h2>Root Cause Intervention Package</h2><div class="tablewrap"><table id="causeActionTable"></table></div></div></div></div>
+<div id="causes" class="page"><div class="grid"><div class="card span7"><h2>Top Detailed Causes / Causes_Name</h2><canvas id="chartCauseTop"></canvas></div><div class="card span5"><h2>Cause Intelligence Brief</h2><div id="causeBrief" class="decision-text"></div></div><div class="card span12"><h2>Cause × Neighborhood Heatmap</h2><p class="card-sub" id="causeNeighborhoodSub"></p><div class="tablewrap"><table id="causeNeighborhoodTable"></table></div></div><div class="card span6"><h2>Cause × Priority Matrix</h2><div class="tablewrap"><table id="causePriorityTable"></table></div></div><div class="card span6"><h2>Root Cause Intervention Package</h2><div class="tablewrap"><table id="causeActionTable"></table></div></div></div></div>
 <div id="actions" class="page"><div class="grid"><div class="card span12"><h2>AI-Assisted Decision Support / Recommended Priority Actions</h2><div class="decision-list" id="decisionList"></div></div></div></div>
 <div id="data" class="page"><div class="card"><h2>Filtered Data Explorer</h2><div class="tablewrap"><table id="dataTable"></table></div></div></div>
 
@@ -111,7 +117,7 @@ const I18N={
   labels:['المدينة','الحي','الأولوية','فئة المشكلة الرئيسية','السنة / الفترة','هدف التنمية المستدامة','محور خطة التعافي (للمشكلة)','محور خطة التعافي (للحل)'],
   allNeighborhoods:'كل الأحياء', allPriorities:'كل الأولويات', allClasses:'كل فئات المشاكل', allCities:'كل المدن', allYears:'كل السنوات / الفترات', allSdgs:'كل أهداف التنمية المستدامة', allPlerps:'كل المحاور', allSolClasses:'كل المحاور',
   selectAll:'تحديد الكل', clearAll:'إلغاء التحديد', selectedSuffix:'محدد', noNeighborhoods:'لا توجد أحياء لهذه المدينة',
-  headings:['إشارة الأولوية حسب الحي','توزيع الأولويات','فئات المشاكل الرئيسية','محاور PLERP / الاستجابة','الرؤى التنفيذية','أهم الأسباب التفصيلية / Causes_Name','خريطة احتياجات الأحياء','ملف الحي المختار','توزيع أهداف التنمية المستدامة','فئات الحلول','مصفوفة الأولويات','أهم الأسباب التفصيلية / Causes_Name','موجز لمعرفة للأسباب','مصفوفة الأسباب × الأحياء','مصفوفة الأسباب × الأولوية','حزمة التدخل حسب السبب الجذري','دعم قرار مقترح / إجراءات ذات أولوية','مستكشف البيانات المفلترة'],
+  headings:['أولويات التحديات على مستوى الأحياء','تصنيف الأولويات','فئات المشاكل الرئيسية','محاور PLERP / الاستجابة','الرؤى التنفيذية','أهم الأسباب التفصيلية / Causes_Name','خريطة احتياجات الأحياء','ملف الحي المختار','توزع التحديات المجتمعية وفق أهداف التنمية المستدامة','تحليل الحلول وفقاً لمحاور التعافي','مصفوفة الأولويات','أهم الأسباب التفصيلية / Causes_Name','موجز لمعرفة للأسباب','مصفوفة الأسباب × الأحياء','مصفوفة الأسباب × الأولوية','حزمة التدخل حسب السبب الجذري','دعم قرار مقترح / إجراءات ذات أولوية','مستكشف البيانات المفلترة'],
   footer:'تم إعدادها كحزمة HTML + Excel مرتبطة، وبهوية بصرية متوافقة مع ألوان برنامج الأمم المتحدة الإنمائي.',
   kpi:['إجمالي السجلات','أولوية مهمة','أولوية متوسطة','الأحياء','أبرز مشكلة','أبرز محور'],
   kpiSub:['سجلات مفلترة','من السجلات','من السجلات','أحياء مشمولة'],
@@ -185,16 +191,7 @@ function clean(v,fallback){ const s=(v===undefined||v===null)?'':String(v).trim(
 // بعض قيم "محاور خطة التعافي" مخزّنة بصيغتين (مع/بدون بادئة "محور") لنفس المحور بالضبط -
 // هاد بيوحّدها لقيمة واحدة قبل الفلترة والعرض حتى ما يضيع نص البيانات.
 function normPillar(v,fallback){ return clean(v,fallback).replace(/^محور\s*/,''); }
-function buildData(rawRows){
-  const rows = rawRows.map(r=>({
-    Index:r['Index']!==undefined?r['Index']:'', City:clean(r['City']), Neighborhood:clean(r['Neighborhood']),
-    Problem:clean(r['Problem']), 'Main Problem Class':clean(r['Main Problem Class'],'غير محدد'),
-    'Secondary Problem Class':clean(r['Secondary Problem Class'],'غير محدد'), Cause:clean(r['Cause']),
-    Result:clean(r['Result']), Priority:clean(r['Priority'],'غير محدد'), SDG:clean(r['SDG'],'غير محدد'),
-    PLERP:normPillar(r['PLERP'],'غير محدد'), 'Dialogue Stakeholders':clean(r['Dialogue Stakeholders']),
-    'Recommended Solution':clean(r['Recommended Solution']), 'Solution Class':normPillar(r['Solution Class'],'غير محدد'),
-    Year:clean(r['Year'])
-  })).filter(r=>r.Neighborhood);
+function computeAreaStats(rows){
   const byArea = {};
   rows.forEach(r=>{ (byArea[r.Neighborhood] = byArea[r.Neighborhood]||[]).push(r); });
   let areas = Object.keys(byArea).map(name=>{
@@ -208,6 +205,19 @@ function buildData(rawRows){
     return {name, records:n, high, medium, low, high_pct, top_class, _rows:ar};
   });
   areas.sort((a,b)=>b.records-a.records);
+  return areas;
+}
+function buildData(rawRows){
+  const rows = rawRows.map(r=>({
+    Index:r['Index']!==undefined?r['Index']:'', City:clean(r['City']), Neighborhood:clean(r['Neighborhood']),
+    Problem:clean(r['Problem']), 'Main Problem Class':clean(r['Main Problem Class'],'غير محدد'),
+    'Secondary Problem Class':clean(r['Secondary Problem Class'],'غير محدد'), Cause:clean(r['Cause']),
+    Result:clean(r['Result']), Priority:clean(r['Priority'],'غير محدد'), SDG:clean(r['SDG'],'غير محدد'),
+    PLERP:normPillar(r['PLERP'],'غير محدد'), 'Dialogue Stakeholders':clean(r['Dialogue Stakeholders']),
+    'Recommended Solution':clean(r['Recommended Solution']), 'Solution Class':normPillar(r['Solution Class'],'غير محدد'),
+    Year:clean(r['Year'])
+  })).filter(r=>r.Neighborhood);
+  let areas = computeAreaStats(rows);
   const recommendations = areas.slice(0, Math.min(4, areas.length)).map(a=>{
     const causeCounts = rawCountBy(a._rows,'Cause').filter(x=>x[0] && x[0]!=='غير محدد');
     const topCause = causeCounts.length? causeCounts[0][0] : '';
@@ -328,7 +338,17 @@ function applyFilters(){
 }
 function renderKpis(){let n=filtered.length, h=filtered.filter(r=>r.Priority==='مهمة').length, m=filtered.filter(r=>r.Priority==='متوسطة').length; let areas=uniq(filtered.map(r=>r.Neighborhood)).length; let top=countBy(filtered,'Main Problem Class')[0]||['-',0]; let pl=countBy(filtered,'PLERP')[0]||['-',0]; byId('kpis').innerHTML=[['📋',t('kpi')[0],n,t('kpiSub')[0]],['🚨',t('kpi')[1],h,pct(h,n)+'% '+t('kpiSub')[1]],['⚠️',t('kpi')[2],m,pct(m,n)+'% '+t('kpiSub')[2]],['🗺️',t('kpi')[3],areas,t('kpiSub')[3]],['🏗️',t('kpi')[4],top[1],top[0]],['🎯',t('kpi')[5],pl[1],pl[0]]].map(x=>`<div class="kpi"><div class="ico">${x[0]}</div><h3>${x[1]}</h3><div class="num">${x[2]}</div><small>${x[3]}</small></div>`).join('')}
 function destroyCharts(){charts.forEach(c=>c.destroy());charts=[]}
-function chart(id,type,labels,values,title, horizontal=false){const ctx=byId(id); if(!ctx) return; charts.push(new Chart(ctx,{type:type,data:{labels:labels,datasets:[{label:title,data:values,backgroundColor:colors,borderColor:'#006eb5',borderWidth: type==='line'?3:1,fill:type==='line'}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:horizontal?'y':'x',plugins:{legend:{display:type==='doughnut'},tooltip:{rtl:true,textDirection:'rtl'}},scales:type==='doughnut'?{}:{x:{ticks:{color:'#49697d'}},y:{beginAtZero:true,ticks:{color:'#49697d'}}}}}))}
+if(window.ChartDataLabels){Chart.register(ChartDataLabels); Chart.defaults.set('plugins.datalabels',{display:false});}
+function chart(id,type,labels,values,title, horizontal=false){const ctx=byId(id); if(!ctx) return;
+  let datalabelsCfg;
+  if(type==='doughnut'||type==='pie'){
+    // ثابتة دائماً في منتصف كل قطعة، بلون غامق مع حد أبيض حولها لتبقى مقروءة حتى لو خرجت قليلاً عن حدود المخطط
+    datalabelsCfg={display:true,anchor:'center',align:'center',clamp:true,color:'#06243b',textStrokeColor:'#ffffff',textStrokeWidth:3,font:{weight:'800',family:'Cairo',size:13},formatter:(v,c)=>{const arr=c.chart.data.datasets[0].data; const total=arr.reduce((a,b)=>a+b,0); const p=total?(v/total*100):0; return p.toFixed(1)+'%';}};
+  } else {
+    // ثابتة دائماً عند نهاية كل عمود لكل المخططات الشريطية
+    datalabelsCfg={display:true,anchor:'end',align:'end',clamp:true,color:'#06243b',font:{weight:'700',family:'Cairo'},formatter:(v)=>v};
+  }
+  charts.push(new Chart(ctx,{type:type,data:{labels:labels,datasets:[{label:title,data:values,backgroundColor:colors,borderColor:'#006eb5',borderWidth: type==='line'?3:1,fill:type==='line'}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:horizontal?'y':'x',layout:horizontal?{padding:{[document.documentElement.dir==='rtl'?'left':'right']:30}}:(type==='doughnut'||type==='pie'?{padding:8}:{}),plugins:{legend:{display:type==='doughnut'},tooltip:{rtl:true,textDirection:'rtl'},datalabels:datalabelsCfg},scales:type==='doughnut'?{}:{x:{ticks:{color:'#49697d'}},y:{beginAtZero:true,ticks:{color:'#49697d'}}}}}))}
 function renderCharts(){destroyCharts(); let areas=countBy(filtered,'Neighborhood').slice(0,8); chart('chartAreas','bar',areas.map(x=>x[0]),areas.map(x=>x[1]),'Records',true); let pr=countBy(filtered,'Priority'); chart('chartPriority','doughnut',pr.map(x=>x[0]),pr.map(x=>x[1]),'Priority'); let main=countBy(filtered,'Main Problem Class').slice(0,10); chart('chartMain','bar',main.map(x=>x[0]),main.map(x=>x[1]),'Problems',true); let pl=countBy(filtered,'PLERP').slice(0,8); chart('chartPlerp','bar',pl.map(x=>x[0]),pl.map(x=>x[1]),'PLERP',true); let sdg=countBy(filtered,'SDG').slice(0,8); chart('chartSdg','bar',sdg.map(x=>x[0]),sdg.map(x=>x[1]),'SDG',true); let sol=countBy(filtered,'Solution Class').slice(0,8); chart('chartSolutions','doughnut',sol.map(x=>x[0]),sol.map(x=>x[1]),'Solution Class'); let causes=countBy(filtered,'Cause').slice(0,12); chart('chartCauseTop','bar',causes.map(x=>x[0]),causes.map(x=>x[1]),'Detailed Causes',true);}
 function renderInsights(){
   const city = byId('fCity').value;
@@ -432,6 +452,11 @@ function renderCauseTables(){
   if(byId('causeNeighborhoodTable')){
     const areas=uniq(rows.map(r=>r.Neighborhood)).slice(0,8); let body=causes.slice(0,10).map(x=>{let d=mainByCause[x[0]]?.neighborhoods||{}; return `<tr><td><b>${vtxt(x[0])}</b></td>${areas.map(a=>{let v=d[a]||0; let cls=v>=5?'heat-high':v>=2?'heat-med':v>=1?'heat-low':''; return `<td class="${cls}">${v}</td>`}).join('')}<td>${x[1]}</td></tr>`}).join('');
     byId('causeNeighborhoodTable').innerHTML=`<thead><tr><th>Detailed Cause</th>${areas.map(a=>`<th>${vtxt(a)}</th>`).join('')}<th>Total</th></tr></thead><tbody>${body}</tbody>`;
+    if(byId('causeNeighborhoodSub')){
+      byId('causeNeighborhoodSub').innerHTML = LANG==='ar'
+        ? `<b>كيف تُقرأ المصفوفة:</b> كل صف يمثل سبباً تفصيلياً من أكثر الأسباب تكراراً، وكل عمود يمثل حياً. الرقم داخل الخلية هو <b>عدد السجلات</b> لهذا السبب في هذا الحي ضمن البيانات المفلترة حالياً. يشير لون الخلية إلى شدة التكرار: <span class="pill" style="background:#006eb5;color:#fff">غامق</span> = تكرار مرتفع (5 سجلات فأكثر)، <span class="pill" style="background:#7fc4e8;color:#06243b">متوسط</span> = تكرار متوسط (2–4 سجلات)، <span class="pill" style="background:#dff1fb;color:#06243b">فاتح</span> = تكرار منخفض (سجل واحد)، وبلا لون = لا وجود لهذا السبب في هذا الحي. عمود "Total" هو إجمالي عدد سجلات هذا السبب عبر كل الأحياء المعروضة.`
+        : `<b>How to read this matrix:</b> each row is one of the most frequent detailed causes, each column is a neighborhood. The number in each cell is the <b>record count</b> for that cause in that neighborhood within the currently filtered data. Cell shading reflects frequency: dark = high (5+ records), medium blue = moderate (2–4), light = low (1), and no color = none. The "Total" column is the cause's total record count across the neighborhoods shown.`;
+    }
   }
   if(byId('causeActionTable')){
     byId('causeActionTable').innerHTML=`<thead><tr><th>Cause</th><th>Main Class</th><th>Recommended Intervention Package</th><th>Existing Quick Solution</th></tr></thead><tbody>${causes.slice(0,8).map(x=>{let d=mainByCause[x[0]]||{}; let tc=topObj(d.classes), ts=topObj(d.solutions); return `<tr><td><b>${vtxt(x[0])}</b></td><td>${vtxt(tc[0])}</td><td>${LANG==='ar'?interventionForCause(x[0],tc[0]):(VALUE_EN[interventionForCause(x[0],tc[0])]||interventionForCause(x[0],tc[0]))}</td><td>${vtxt(ts[0])}</td></tr>`}).join('')}</tbody>`;
@@ -734,7 +759,7 @@ byId('areaProfile').innerHTML=`<div class="pill">${vtxt(a.name)}</div><p><b>${la
 function renderMatrix(){const L=LANG==='ar'
 ? {rank:'الترتيب', n:'الحي', rec:'السجلات', high:'% مهمة', top:'أبرز فئة', decision:'القرار', urgent:'تدخل عاجل', medium:'أولوية متوسطة', monitor:'متابعة'}
 : {rank:'Rank', n:'Neighborhood', rec:'Records', high:'High %', top:'Top Class', decision:'Decision', urgent:'Urgent', medium:'Medium', monitor:'Monitor'};
-let sorted=[...DATA.areas].sort((a,b)=>(b.high_pct*b.records)-(a.high_pct*a.records));
+let sorted=computeAreaStats(filtered).sort((a,b)=>(b.high_pct*b.records)-(a.high_pct*a.records));
 let rows=sorted.map((a,i)=>{let dec=a.high_pct>=80||a.records>=40?L.urgent:a.high_pct>=60?L.medium:L.monitor; let pill=a.high_pct>=80||a.records>=40?'high':a.high_pct>=60?'med':'low'; return `<tr><td>${i+1}</td><td><b>${a.name}</b></td><td>${a.records}</td><td>${a.high_pct}%</td><td>${vtxt(a.top_class)}</td><td><span class="pill ${pill}">${dec}</span></td></tr>`}).join('');
 byId('matrixTable').innerHTML=`<thead><tr><th>${L.rank}</th><th>${L.n}</th><th>${L.rec}</th><th>${L.high}</th><th>${L.top}</th><th>${L.decision}</th></tr></thead><tbody>${rows}</tbody>`}
 function renderDecisions(){const L=LANG==='ar'
