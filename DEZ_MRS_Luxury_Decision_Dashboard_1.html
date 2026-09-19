@@ -41,7 +41,7 @@ body.loading #topLoader{animation:loadbar 1.1s ease-in-out infinite}
 .skeleton{background:linear-gradient(90deg,#e7f1f8 25%,#f4f9fc 37%,#e7f1f8 63%);background-size:400% 100%;animation:shimmer 1.4s ease infinite}
 @keyframes shimmer{0%{background-position:100% 50%}100%{background-position:0 50%}}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px} .card{background:var(--card);border:1px solid #fff;border-radius:24px;padding:18px;box-shadow:0 14px 38px #006eb513;min-height:280px} .card h2{margin:0 0 14px;color:#06466f;font-size:20px} .span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12} canvas{max-height:290px} .page{display:none}.page.active{display:block}
-.map{height:430px;border-radius:24px;background:linear-gradient(135deg,#063a62,#005f9d 55%,#0099da);position:relative;overflow:hidden;border:1px solid #fff;box-shadow:inset 0 0 60px #002e4c66} .map:before{content:attr(data-title);position:absolute;left:22px;top:18px;color:#ffffff99;font-weight:800;direction:ltr} .river{position:absolute;inset:56% -10% auto -10%;height:38px;background:#6ccff6aa;transform:rotate(-12deg);filter:blur(.3px)} .bubble{position:absolute;border-radius:999px;background:#ffffffea;border:4px solid var(--sky);box-shadow:0 0 30px #6ccff6aa;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;cursor:pointer;transition:.25s;color:#053d65;overflow:hidden;padding:4%} .bubble:hover{transform:scale(1.06);z-index:5} .bubble.selected{border-color:#ffd23f!important;box-shadow:0 0 0 5px #ffd23f66,0 0 40px #ffd23fbb;transform:scale(1.08);z-index:6} .bubble.selected:hover{transform:scale(1.12)} .bubble.dimmed{opacity:.28;filter:grayscale(.4);box-shadow:none} .bubble .bname{display:block;width:max-content;max-width:none;min-width:0;flex:0 0 auto;font-weight:800;line-height:1.15;white-space:nowrap;overflow:visible;text-overflow:clip} .bubble .bnum{display:block;width:100%;min-width:0;font-weight:900;line-height:1.05} .bubble .bunit{display:block;width:100%;min-width:0;font-weight:800;opacity:.8;line-height:1.1;white-space:nowrap;overflow:visible;text-overflow:clip} .legend{position:absolute;bottom:16px;right:16px;background:#ffffffdd;border-radius:14px;padding:10px 13px;color:#14324a;font-size:12px;line-height:2}
+.map{height:430px;border-radius:24px;background:linear-gradient(135deg,#063a62,#005f9d 55%,#0099da);position:relative;overflow:hidden;border:1px solid #fff;box-shadow:inset 0 0 60px #002e4c66} .map:before{content:attr(data-title);position:absolute;left:22px;top:18px;color:#ffffff99;font-weight:800;direction:ltr} .river{position:absolute;inset:56% -10% auto -10%;height:38px;background:#6ccff6aa;transform:rotate(-12deg);filter:blur(.3px)} .bubble{position:absolute;border-radius:999px;background:#ffffffea;border:4px solid var(--sky);box-shadow:0 0 30px #6ccff6aa;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;cursor:pointer;transition:.25s;color:#053d65;overflow:hidden;padding:4%} .bubble:hover{transform:scale(1.06);z-index:5} .bubble.selected{transform:scale(1.08);z-index:6} .bubble.selected:hover{transform:scale(1.12)} .bubble.dimmed{opacity:.28;filter:grayscale(.4);box-shadow:none} .bubble .bname{display:block;width:max-content;max-width:none;min-width:0;flex:0 0 auto;font-weight:800;line-height:1.15;white-space:nowrap;overflow:visible;text-overflow:clip} .bubble .bnum{display:block;width:100%;min-width:0;font-weight:900;line-height:1.05} .bubble .bunit{display:block;width:100%;min-width:0;font-weight:800;opacity:.8;line-height:1.1;white-space:nowrap;overflow:visible;text-overflow:clip} .legend{position:absolute;bottom:16px;right:16px;background:#ffffffdd;border-radius:14px;padding:10px 13px;color:#14324a;font-size:12px;line-height:2}
 .tablewrap{max-height:460px;overflow:auto;border:1px solid var(--line);border-radius:18px} table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:10px;border-bottom:1px solid #e4eef5;text-align:right;vertical-align:top} th{background:#e8f6fd;color:#06466f;position:sticky;top:0;z-index:1} .pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#e6f5fc;border:1px solid #c8e6f5;font-weight:800} .high{background:#ffe8e9;color:#a5272d} .med{background:#fff3d9;color:#845500} .low{background:#e7f8ef;color:#137349}
 .card-sub{margin:-6px 0 16px;color:var(--muted);font-size:13px;line-height:1.9;background:#f2f9fd;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
 .card-sub b{color:#06466f}
@@ -97,7 +97,7 @@ body.loading #topLoader{animation:loadbar 1.1s ease-in-out infinite}
   <div><label class="flabel">Recovery Plan Pillar (Solution)</label><select id="fSolClass" onchange="applyFilters()"></select></div>
   <div style="display:flex;align-items:flex-end"><button type="button" id="btnClearFilters" onclick="clearAllFilters()" class="clear-filters-btn">✖️ مسح كل الفلاتر</button></div>
 </div><div id="activeFilterHint" class="active-filter-hint"></div></div></section>
-<div id="overview" class="page active"><div class="kpis" id="kpis"><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div></div><div class="grid"><div class="card span8"><h2>Priority Signal by Neighborhood</h2><canvas id="chartAreas"></canvas></div><div class="card span4"><h2>Priority Distribution</h2><canvas id="chartPriority"></canvas></div><div class="card span6"><h2>Main Problem Classes</h2><canvas id="chartMain"></canvas></div><div class="card span6"><h2>PLERP / Response Pillars</h2><canvas id="chartPlerp"></canvas></div><div class="card span12"><h2>Executive Insights</h2><div class="insights" id="insights"></div></div><div class="card span12"><h2>Top Detailed Causes / Causes_Name</h2><div id="causeNarrative" class="narrative"></div><div class="tablewrap"><table id="topCausesTable"></table></div></div></div></div>
+<div id="overview" class="page active"><div class="kpis" id="kpis"><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div><div class="kpi skeleton" style="min-height:122px"></div></div><div class="grid"><div class="card span8"><h2>Priority Signal by Neighborhood</h2><canvas id="chartAreas"></canvas></div><div class="card span4"><h2>Priority Distribution</h2><canvas id="chartPriority"></canvas></div><div class="card span6"><h2>Main Problem Classes</h2><canvas id="chartMain"></canvas></div><div class="card span6"><h2>PLERP / Response Pillars</h2><canvas id="chartPlerp"></canvas></div><div class="card span12"><h2>Executive Insights</h2><div class="insights" id="insights"></div></div><div class="card span12"><h2>Detailed Cause Analysis</h2><div id="causeNarrative" class="narrative"></div><div class="tablewrap"><table id="topCausesTable"></table></div></div></div></div>
 <div id="map" class="page"><div class="grid"><div class="card span8"><h2> Decision Map / Neighborhood Risk Bubbles</h2><div class="map" id="mapBox" data-title="Decision Support Map"><div class="river"></div><div class="legend">🔴 High decision priority<br>🟠 Medium decision priority<br>🔵 Monitoring / follow-up<br><b>Bubble size = number of records</b></div></div></div><div class="card span4"><h2>Selected Area Profile</h2><div id="areaProfile" style="line-height:2;color:#2d526b">Click any neighborhood bubble to view the decision profile.</div></div></div></div>
 <div id="analysis" class="page"><div class="grid"><div class="card span6"><h2>SDG Distribution</h2><canvas id="chartSdg"></canvas></div><div class="card span6"><h2>Solution Classes</h2><canvas id="chartSolutions"></canvas></div><div class="card span12"><h2>Priority Matrix</h2><div class="tablewrap"><table id="matrixTable"></table></div></div></div></div>
 <div id="causes" class="page"><div class="grid"><div class="card span7"><h2>Top Detailed Causes / Causes_Name</h2><canvas id="chartCauseTop"></canvas></div><div class="card span5"><h2>Cause Intelligence Brief</h2><div id="causeBrief" class="decision-text"></div></div><div class="card span12"><h2>Cause × Neighborhood Heatmap</h2><p class="card-sub" id="causeNeighborhoodSub"></p><div class="tablewrap"><table id="causeNeighborhoodTable"></table></div></div><div class="card span6"><h2>Cause × Priority Matrix</h2><div class="tablewrap"><table id="causePriorityTable"></table></div></div><div class="card span6"><h2>Root Cause Intervention Package</h2><div class="tablewrap"><table id="causeActionTable"></table></div></div></div></div>
@@ -120,7 +120,7 @@ const I18N={
   labels:['City','Neighborhood','Priority','Main Problem Class','Year / Period','SDG','Recovery Plan Pillar (Problem)','Recovery Plan Pillar (Solution)'],
   allNeighborhoods:'All neighborhoods', allPriorities:'All priorities', allClasses:'All classes', allCities:'All cities', allYears:'All years / periods', allSdgs:'All SDGs', allPlerps:'All pillars', allSolClasses:'All pillars',
   selectAll:'Select all', clearAll:'Clear', selectedSuffix:'selected', noNeighborhoods:'No neighborhoods for this city',
-  headings:['Priority Signal by Neighborhood','Priority Distribution','Main Problem Classes','PLERP / Response Pillars','Executive Insights','Top Detailed Causes / Causes_Name',' Decision Map / Neighborhood Need Bubbles','Selected Area Profile','SDG Distribution','Solution Classes','Priority Matrix','Top Detailed Causes / Causes_Name','Cause Intelligence Brief','Cause × Neighborhood Heatmap','Cause × Priority Matrix','Root Cause Intervention Package','AI-Assisted Decision Support / Recommended Priority Actions','Filtered Data Explorer'],
+  headings:['Priority Signal by Neighborhood','Priority Distribution','Main Problem Classes','PLERP / Response Pillars','Executive Insights','Detailed Cause Analysis',' Decision Map / Neighborhood Need Bubbles','Selected Area Profile','SDG Distribution','Solution Classes','Priority Matrix','Top Detailed Causes / Causes_Name','Cause Intelligence Brief','Cause × Neighborhood Heatmap','Cause × Priority Matrix','Root Cause Intervention Package','AI-Assisted Decision Support / Recommended Priority Actions','Filtered Data Explorer'],
   footer:'Prepared as a linked HTML + Excel decision-support package. Visual identity aligned with UNDP blue / white digital style.',
   kpi:['Total Records','High Priority','Medium Priority','Neighborhoods','Top Problem','Top Pillar'],
   kpiSub:['Filtered issues','of records','of records','covered areas'],
@@ -138,7 +138,7 @@ const I18N={
   labels:['المدينة','الحي','الأولوية','فئة المشكلة الرئيسية','السنة / الفترة','هدف التنمية المستدامة','محور خطة التعافي (للمشكلة)','محور خطة التعافي (للحل)'],
   allNeighborhoods:'كل الأحياء', allPriorities:'كل الأولويات', allClasses:'كل فئات المشاكل', allCities:'كل المدن', allYears:'كل السنوات / الفترات', allSdgs:'كل أهداف التنمية المستدامة', allPlerps:'كل المحاور', allSolClasses:'كل المحاور',
   selectAll:'تحديد الكل', clearAll:'إلغاء التحديد', selectedSuffix:'محدد', noNeighborhoods:'لا توجد أحياء لهذه المدينة',
-  headings:['أولويات التحديات على مستوى الأحياء','تصنيف الأولويات','فئات المشاكل الرئيسية','محاور PLERP / الاستجابة','الرؤى التنفيذية','أهم الأسباب التفصيلية / Causes_Name','خريطة احتياجات الأحياء','ملف الحي المختار','توزع التحديات المجتمعية وفق أهداف التنمية المستدامة','تحليل الحلول وفقاً لمحاور التعافي','مصفوفة الأولويات','أهم الأسباب التفصيلية / Causes_Name','موجز لمعرفة للأسباب','مصفوفة الأسباب × الأحياء','مصفوفة الأسباب × الأولوية','حزمة التدخل حسب السبب الجذري','دعم قرار مقترح / إجراءات ذات أولوية','مستكشف البيانات المفلترة'],
+  headings:['أولويات التحديات على مستوى الأحياء','تصنيف الأولويات','فئات المشاكل الرئيسية','محاور PLERP / الاستجابة','الرؤى التنفيذية','تحليل الأسباب التفصيلية','خريطة احتياجات الأحياء','ملف الحي المختار','توزع التحديات المجتمعية وفق أهداف التنمية المستدامة','تحليل الحلول وفقاً لمحاور التعافي','مصفوفة الأولويات','أهم الأسباب التفصيلية / Causes_Name','موجز لمعرفة للأسباب','مصفوفة الأسباب × الأحياء','مصفوفة الأسباب × الأولوية','حزمة التدخل حسب السبب الجذري','دعم قرار مقترح / إجراءات ذات أولوية','مستكشف البيانات المفلترة'],
   footer:'تم إعدادها كحزمة HTML + Excel مرتبطة، وبهوية بصرية متوافقة مع ألوان برنامج الأمم المتحدة الإنمائي.',
   kpi:['إجمالي السجلات','أولوية مهمة','أولوية متوسطة','الأحياء','أبرز مشكلة','أبرز محور'],
   kpiSub:['سجلات مفلترة','من السجلات','من السجلات','أحياء مشمولة'],
@@ -240,7 +240,7 @@ function buildData(rawRows){
   })).filter(r=>r.Neighborhood);
   let areas = computeAreaStats(rows);
   const recommendations = areas.slice(0, Math.min(4, areas.length)).map(a=>{
-    const causeCounts = rawCountBy(a._rows,'Cause').filter(x=>x[0] && x[0]!=='غير محدد');
+    const causeCounts = rawCountBy(a._rows,'Cause').filter(x=>x[0] && x[0]!=='غير محدد' && x[0]!=='0');
     const topCause = causeCounts.length? causeCounts[0][0] : '';
     const classCounts = rawCountBy(a._rows,'Main Problem Class');
     const top_classes = classCounts.slice(0,3);
@@ -304,6 +304,10 @@ function byId(id){return document.getElementById(id)}
 function uniq(arr){return [...new Set(arr.filter(Boolean))]}
 function fillSelect(id,values,label){const s=byId(id); s.innerHTML='<option value="">'+label+'</option>'+values.map(v=>`<option value="${String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;')}">${vtxt(v)}</option>`).join('')}
 function countBy(rows,col){const m={}; rows.forEach(r=>{const raw=r[col]||'غير محدد'; const v=vtxt(raw); m[v]=(m[v]||0)+1}); return Object.entries(m).sort((a,b)=>b[1]-a[1])}
+// Some source rows carry the literal placeholder "0" in the Cause field
+// instead of being left blank. Treat that like a missing value everywhere
+// "top causes" are ranked, so it never shows up as a real cause/row.
+function countByCause(rows,limit){return countBy(rows,'Cause').filter(x=>x[0]!=='0').slice(0,limit||10)}
 function pct(n,d){return d?Math.round(n/d*100):0}
 function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));byId(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active'); setTimeout(()=>{ renderAll(); if(id==='map') renderMap(); },100)}
 
@@ -415,7 +419,7 @@ function renderCharts(){destroyCharts();
   let plR=rawCountBy(filtered,'PLERP').slice(0,8); chart('chartPlerp','bar',plR.map(x=>vtxt(x[0])),plR.map(x=>x[1]),'PLERP',true,'PLERP',plR.map(x=>x[0]));
   let sdgR=rawCountBy(filtered,'SDG').slice(0,8); chart('chartSdg','bar',sdgR.map(x=>vtxt(x[0])),sdgR.map(x=>x[1]),'SDG',true,'SDG',sdgR.map(x=>x[0]));
   let solR=rawCountBy(filtered,'Solution Class').slice(0,8); chart('chartSolutions','doughnut',solR.map(x=>vtxt(x[0])),solR.map(x=>x[1]),'Solution Class',false,'Solution Class',solR.map(x=>x[0]));
-  let causes=countBy(filtered,'Cause').slice(0,12); chart('chartCauseTop','bar',causes.map(x=>x[0]),causes.map(x=>x[1]),'Detailed Causes',true);
+  let causes=countByCause(filtered,12); chart('chartCauseTop','bar',causes.map(x=>x[0]),causes.map(x=>x[1]),'Detailed Causes',true);
   showActiveFilterHint();
 }
 function renderInsights(){
@@ -434,7 +438,7 @@ function renderInsights(){
   const topClass = countBy(filtered,'Main Problem Class')[0] || ['غير محدد',0];
   const topPillar = countBy(filtered,'PLERP')[0] || ['غير محدد',0];
   const topSolution = countBy(filtered,'Solution Class')[0] || ['غير محدد',0];
-  const topCause = countBy(filtered,'Cause')[0] || ['غير محدد',0];
+  const topCause = countByCause(filtered,1)[0] || ['غير محدد',0];
   const topResult = countBy(filtered,'Result')[0] || ['غير محدد',0];
   const recs = filtered.map(r=>r['Recommended Solution']).filter(Boolean);
   const sampleRec = recs.length ? recs[0] : (LANG==='ar'?'تحديد حزمة تدخلات سريعة بناءً على المشكلة الأكثر تكراراً ونتائج الفلترة الحالية.':'Define a rapid intervention package based on the most repeated issue and the current filter results.');
@@ -498,16 +502,22 @@ function interventionForCause(cause, cls){
 }
 function renderCauseTables(){
   const rows=filtered, n=rows.length;
-  const causes=topItems(rows,'Cause',12);
+  const causes=countByCause(rows,12);
   const mainByCause={};
   rows.forEach(r=>{let c=r.Cause||'غير محدد'; if(!mainByCause[c]) mainByCause[c]={classes:{},solutions:{},priorities:{},neighborhoods:{},results:{}}; ['Main Problem Class','Recommended Solution','Priority','Neighborhood','Result'].forEach(k=>{let bucket = k==='Main Problem Class'?'classes':k==='Recommended Solution'?'solutions':k==='Priority'?'priorities':k==='Neighborhood'?'neighborhoods':'results'; let v=r[k]||'غير محدد'; mainByCause[c][bucket][v]=(mainByCause[c][bucket][v]||0)+1;});});
   function topObj(o){let a=Object.entries(o||{}).sort((x,y)=>y[1]-x[1]); return a[0]||['غير محدد',0]}
+  // The Executive Summary "Problem Name" table/narrative reads from the
+  // Excel "Problem" column (not "Cause") — a separate grouping, kept apart
+  // from the Cause-based analysis used on the Detailed Causes page below.
+  const problems=countBy(rows,'Problem').slice(0,12);
+  const mainByProblem={};
+  rows.forEach(r=>{let p=r.Problem||'غير محدد'; if(!mainByProblem[p]) mainByProblem[p]={classes:{},secondary:{},neighborhoods:{}}; let cv=r['Main Problem Class']||'غير محدد'; mainByProblem[p].classes[cv]=(mainByProblem[p].classes[cv]||0)+1; let sv=r['Secondary Problem Class']||'غير محدد'; mainByProblem[p].secondary[sv]=(mainByProblem[p].secondary[sv]||0)+1; let nv=r.Neighborhood||'غير محدد'; mainByProblem[p].neighborhoods[nv]=(mainByProblem[p].neighborhoods[nv]||0)+1;});
   if(byId('topCausesTable')){
-    byId('topCausesTable').innerHTML=`<thead><tr><th>#</th><th>Detailed Cause / Causes_Name</th><th>Count</th><th>% of Filtered</th><th>Top Problem Class</th><th>Top Neighborhood</th><th>Decision Action</th></tr></thead><tbody>${causes.map((x,i)=>{let d=mainByCause[x[0]]||{}; let tc=topObj(d.classes), ta=topObj(d.neighborhoods); return `<tr><td>${i+1}</td><td><b>${vtxt(x[0])}</b></td><td>${x[1]}</td><td>${pct(x[1],n)}%</td><td>${vtxt(tc[0])}</td><td>${vtxt(ta[0])}</td><td>${LANG==='ar'?interventionForCause(x[0],tc[0]):(VALUE_EN[interventionForCause(x[0],tc[0])]||interventionForCause(x[0],tc[0]))}</td></tr>`}).join('')}</tbody>`;
+    byId('topCausesTable').innerHTML=`<thead><tr><th>#</th><th>Problem Name</th><th>Main Class</th><th>Secondary Class</th><th>Count</th><th>% of Filtered</th><th>Top Neighborhood</th><th>Decision Action</th></tr></thead><tbody>${problems.map((x,i)=>{let d=mainByProblem[x[0]]||{}; let tc=topObj(d.classes), sc=topObj(d.secondary), ta=topObj(d.neighborhoods); return `<tr><td>${i+1}</td><td><b>${vtxt(x[0])}</b></td><td>${vtxt(tc[0])}</td><td>${vtxt(sc[0])}</td><td>${x[1]}</td><td>${pct(x[1],n)}%</td><td>${vtxt(ta[0])}</td><td>${LANG==='ar'?interventionForCause(x[0],tc[0]):(VALUE_EN[interventionForCause(x[0],tc[0])]||interventionForCause(x[0],tc[0]))}</td></tr>`}).join('')}</tbody>`;
   }
   if(byId('causeNarrative')){
-    let a=causes[0]||['غير محدد',0], b=causes[1]||['غير محدد',0], c=causes[2]||['غير محدد',0];
-    byId('causeNarrative').innerHTML = n?`ضمن الفلترة الحالية تم تحليل <b>${n}</b> سجل. السبب التفصيلي الأكثر تكراراً هو <b>${a[0]}</b> بعدد <b>${a[1]}</b> (${pct(a[1],n)}%). يليه <b>${b[0]}</b> (${b[1]||0}) ثم <b>${c[0]}</b> (${c[1]||0}). هذه القراءة تساعد على الانتقال من تصنيف المشكلة العام إلى جذر التدخل التنفيذي.`:'لا توجد بيانات مطابقة للفلاتر الحالية.';
+    let a=problems[0]||['غير محدد',0], b=problems[1]||['غير محدد',0], c=problems[2]||['غير محدد',0];
+    byId('causeNarrative').innerHTML = n?`ضمن الفلترة الحالية تم تحليل <b>${n}</b> سجل. المشكلة الأكثر تكراراً هي <b>${a[0]}</b> بعدد <b>${a[1]}</b> (${pct(a[1],n)}%). يليها <b>${b[0]}</b> (${b[1]||0}) ثم <b>${c[0]}</b> (${c[1]||0}). هذه القراءة تساعد على الانتقال من تصنيف المشكلة العام إلى جذر التدخل التنفيذي.`:'لا توجد بيانات مطابقة للفلاتر الحالية.';
   }
   if(byId('causeBrief')){
     const topC=causes[0]||['غير محدد',0]; const d=mainByCause[topC[0]]||{}; const topCls=topObj(d.classes), topArea=topObj(d.neighborhoods), topSol=topObj(d.solutions), topPri=topObj(d.priorities);
@@ -583,9 +593,9 @@ function renderMap(){
   // Keep the bubbles readable while making the available lower area the
   // actual packing area.
   const freeH=Math.max(220,H-titleSafe-pad);
-  const areaBudget=(W*freeH*0.58)/areasSorted.length;
-  const dynamicMaxR=Math.max(42,Math.min(66,Math.sqrt(areaBudget/Math.PI)));
-  const minR=Math.max(24,dynamicMaxR*0.40);
+  const areaBudget=(W*freeH*0.74)/areasSorted.length;
+  const dynamicMaxR=Math.max(48,Math.min(78,Math.sqrt(areaBudget/Math.PI)));
+  const minR=Math.max(28,dynamicMaxR*0.42);
 
   function recordRadius(rec){
     if(maxRec===minRec) return (minR+dynamicMaxR)/2;
@@ -601,10 +611,11 @@ function renderMap(){
   }
 
   function radiusFor(area){
-    const recordR=recordRadius(area.records);
-    // The circle grows with the actual neighborhood name width.
-    const nameR=(textWidth(vtxt(area.name),13)/2)+18;
-    return Math.max(recordR,nameR,30);
+    // Size is driven ONLY by record count, so two areas with the same
+    // number of records always render as exactly the same size — the
+    // neighborhood name never affects the radius. Long names are allowed
+    // to overflow the bubble visually (see .bname { overflow:visible }).
+    return Math.max(recordRadius(area.records),30);
   }
 
   const items=areasSorted
@@ -643,9 +654,18 @@ function renderMap(){
     }
   }
 
+  // Smaller record counts should settle near the top of the map, larger
+  // ones toward the bottom, so the layout reads as a clear small→large
+  // gradient from top to bottom (not just a random packed cluster).
+  function desiredYFor(records){
+    const norm = maxRec===minRec ? 0.5 : (records-minRec)/(maxRec-minRec);
+    return titleSafe + norm*((H-pad)-titleSafe);
+  }
+
   const placed=[];
   for(const item of items){
     const r=item.r;
+    const desiredY=desiredYFor(item.a.records);
     let best=null, bestScore=Infinity;
 
     for(const c of candidates){
@@ -666,10 +686,12 @@ function renderMap(){
         }
       }
 
-      // Prefer positions around the center of the usable area, but never
-      // above the title-safe line.
-      const cx=W/2, cy=titleSafe+(H-titleSafe)/2;
-      score += Math.hypot(c.x-cx,(c.y-cy)*1.05)*0.06;
+      // Prefer positions centered horizontally, but vertically biased
+      // toward this bubble's size-based target row (small on top, large
+      // on bottom) rather than the pure geometric center.
+      const cx=W/2;
+      score += Math.abs(c.x-cx)*0.04;
+      score += Math.abs(c.y-desiredY)*0.5;
 
       if(overlaps===0 && score<bestScore){
         bestScore=score;
@@ -681,7 +703,7 @@ function renderMap(){
     }
 
     if(!best){
-      best={x:W/2,y:titleSafe+r+10};
+      best={x:W/2,y:desiredY};
     }
     placed.push({x:best.x,y:best.y,r,item});
   }
@@ -812,7 +834,7 @@ function profile(a){
   const high_pct=n?Math.round((high/n)*1000)/10:0;
   const classCounts=countBy(ar,'Main Problem Class');
   const top_class=classCounts.length?classCounts[0][0]:'غير محدد';
-  let causes=countBy(ar,'Cause').slice(0,5).map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join('');
+  let causes=countByCause(ar,5).map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join('');
   let topResult=(countBy(ar,'Result')[0]||['-',0]);
   let topSolution=(countBy(ar,'Solution Class')[0]||['-',0]);
   const labels = LANG==='ar'
@@ -833,7 +855,7 @@ byId('matrixTable').innerHTML=`<thead><tr><th>${L.rank}</th><th>${L.n}</th><th>$
 function computeRecommendations(rows){
   const areas = computeAreaStats(rows);
   return areas.slice(0, Math.min(4, areas.length)).map(a=>{
-    const causeCounts = rawCountBy(a._rows,'Cause').filter(x=>x[0] && x[0]!=='غير محدد');
+    const causeCounts = rawCountBy(a._rows,'Cause').filter(x=>x[0] && x[0]!=='غير محدد' && x[0]!=='0');
     const topCause = causeCounts.length? causeCounts[0][0] : '';
     const classCounts = rawCountBy(a._rows,'Main Problem Class');
     const top_classes = classCounts.slice(0,3);
@@ -982,7 +1004,7 @@ async function exportPdfReport(){
     // ---- Top causes table ----
     const table = byId('topCausesTable');
     if(table && table.rows && table.rows.length>1){
-      doc.addPage(); heading('Top Detailed Causes');
+      doc.addPage(); heading('Detailed Cause Analysis');
       let ty=78;
       const rowsArr = [...table.rows].slice(0,26);
       rowsArr.forEach((row,ri)=>{
